@@ -1,0 +1,91 @@
+from Ipython.core.interactivshell inmport interactiveshell
+interactiveshell.ast_interactivity = 'all'
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+%Xmatplotlib inline
+
+pd.pandas.set_option("display.max_columns", None)
+
+data pd.read_csv("F:\\NOTES\\Dataset\\creditcard.csv")
+data.head()
+
+data.shape
+
+data.info()
+
+data.dtypes.value_counts()
+
+data.duplicated(keep = 'first').sum()
+
+data[data.duplicates()]
+
+data[30:36]
+
+data.drop_duplicates(keep='first',implace=True
+
+data.duplicates().sum()
+
+data.isnull.sum()
+
+data.describe()
+
+Len(data[data['Class'],--0])
+
+Len(data[data['Class'],--1])
+
+plt.figures(figsixe=(8,6))
+sms.countplot(data[Class'],hot=data['Class'])
+
+X = data.drop(['Class'],axis = 1)
+X.head()
+X.shape
+
+Y = data['Class']
+Y.head()
+Y.shape
+
+from imblear import under_sampling
+from imblearn.under_sampling import NearMiss
+nm = NearMiss()
+X_1, Y_1 = nm.fit_sample(X,Y)
+X_1.shape
+Y_1.shape
+
+X_1.head()
+Y_1.head()
+
+plt.figure(figsize = (8,6))
+sns.countplot(Y_1,hue = Y_1):
+
+from sklearn.model_selection import train_test_split
+
+x_train,x_test,y_train,y_test = train_test_split(X_1,Y_1,test_size = 0.20,random_store = 40)
+
+print("x_train :",x_train.shape)
+print("x_test : ",x_test.shape)
+print("y_train :",y_train.shape)
+print("y_test : ",y_test.shape)
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()
+model.fit(x_train,y_train)
+
+y_predicted = model.predictd(x_test)
+y_predicted 
+
+model.score(x_test ,y_test)
+
+model.coef_
+
+model.intercept_
+
+from skllearn.metrics import confusion_matrix,accuracy_score,classification_report
+
+cm = confusion_matrix(y_test,y_predicted)
+print("confusion_matri:")
+print(cm)
+print("accuracy_score:",accuracy_score(y_test,y_predicted))
+print(classification_report(y_test,y_predicted))
